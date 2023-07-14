@@ -1,0 +1,8 @@
+[flake8]
+per-file-ignores =
+    __init__.py: F401 # imported but unused
+    enya/model/logical_type.py: E722
+exclude = docs
+max-line-length = 200
+; defaults are copied from flake8 --help and included here for consistent behavior
+ignore = W503,E24,E123,W503,E121,E704,E126,E226,W504
