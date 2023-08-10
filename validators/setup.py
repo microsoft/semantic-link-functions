@@ -1,7 +1,9 @@
 from setuptools import setup, find_packages
 
+version = ""  # don't change - this is updated by .pipelines/version-patch.py
+
 setup(name='semantic-link-functions-validators',
-      version="0.0.1",
+      version=version,
       python_requires='>=3.8',
       description='Semantic Link Functions for Validators',
       author='SemPy Authors',
