@@ -14,6 +14,48 @@ Each semantic function uses information about the data types, metadata (such as 
 
 Semantic functions are automatically discovered when annotated with the @semantic_function decorator. You can think of semantic functions as being similar to C# extension methods applied to the popular DataFrame concept.
 
+## Usage
+
+Usually a FabricDataFrame is retrieved using fabric.read_table(...) or fabric.evaluate_measure(...)
+
+```python
+from sempy.fabric import FabricDataFrame
+
+df = FabricDataFrame(
+    {"country": ["US", "AT"],
+        "lat": [40.7128, 47.8095],
+        "long": [-74.0060, 13.0550]},
+    column_metadata={"lat": {"data_category": "Latitude"}, "long": {"data_category": "Longitude"}},
+)
+
+# Convert to GeoPandas dataframe
+df_geo = df.to_geopandas(lat_col="lat", long_col="long")
+
+# Use the explore function to visualize the data
+df_geo.explore()
+```
+
+You can also create ad-hoc semantic functions
+
+```python
+from sempy.fabric import FabricDataFrame, FabricSeries
+from sempy.fabric.matcher import CountryMatcher, CityMatcher
+from sempy.functions import semantic_function, semantic_paramters
+
+@semantic_function("is_capital")
+@semantic_parameters(col_country=CountryMatcher, col_city=CityMatcher)
+def _is_captial(df: FabricDataFrame, col_country: str, col_city: str) -> FabricSeries:
+    """Returns true if the city is a capital of the country"""
+    capitals = {
+        "US": ["Washington"],
+        "AT": ["Vienna"],
+        # ...
+    }
+
+    return df[[col_country, col_city]] \
+        .apply(lambda row: row[1] in capitals[row[0]], axis=1)
+```
+
 ## Development
 
 Create a conda environment with the following command:
