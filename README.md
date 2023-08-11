@@ -69,6 +69,7 @@ For each package (e.g. holidays), run
 
 ```bash
 cd holidays
+pip install -e .
 pytest -s tests/
 ```
 
