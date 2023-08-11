@@ -1,5 +1,6 @@
 # Semanitc Link Functions
 
+[![Semantic Link Functions](https://github.com/microsoft/semantic-link-functions/actions/workflows/build.yaml/badge.svg)](https://github.com/microsoft/semantic-link-functions/actions/workflows/build.yaml)
 [![PyPI version](https://badge.fury.io/py/semantic-link-functions-geopandas.svg)](https://badge.fury.io/py/semantic-link-functions-geopandas)
 [![PyPI version](https://badge.fury.io/py/semantic-link-functions-holidays.svg)](https://badge.fury.io/py/semantic-link-functions-holidays)
 [![PyPI version](https://badge.fury.io/py/semantic-link-functions-meteostat.svg)](https://badge.fury.io/py/semantic-link-functions-meteostat)

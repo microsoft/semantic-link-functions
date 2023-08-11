@@ -13,8 +13,7 @@ def test_function_holiday():
     holiday_series = df.is_holiday(date_col="date", country_col="country")
     assert holiday_series.tolist() == [False, True]
 
-    # print([m for m in dir(df) if "holiday" in m])
-    assert "is_holiday(country_col='country', date_col='date')" in dir(df)
+    assert "is_holiday(date_col='date', country_col='country')" in dir(df)
 
 
 def test_function_holiday_with_province():
@@ -37,7 +36,7 @@ def test_function_holiday_with_province():
     )
     assert holiday_series.tolist() == [False, True, True, True]
 
-    assert "is_holiday(country_col='country', date_col='date', state_or_province_col='state')" in dir(df)
+    assert "is_holiday(date_col='date', country_col='country', state_or_province_col='state')" in dir(df)
 
 
 def test_function_holiday_multiple():
@@ -53,8 +52,6 @@ def test_function_holiday_multiple():
     holiday_series = df.is_holiday(date_col="date", country_col="country")
     assert holiday_series.tolist() == [False, True]
 
-    # print([m for m in dir(df) if "holiday" in m])
-
-    assert "is_holiday(country_col='country', date_col='date')" in dir(df)
-    assert "is_holiday(country_col='country', date_col='date2')" in dir(df)
-    assert "is_holiday(country_col='country', date_col='date3')" in dir(df)
+    assert "is_holiday(date_col='date', country_col='country')" in dir(df)
+    assert "is_holiday(date_col='date2', country_col='country')" in dir(df)
+    assert "is_holiday(date_col='date3', country_col='country')" in dir(df)
