@@ -1,14 +1,76 @@
-# Project
+# Semantic Link Functions
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+[![Semantic Link Functions](https://github.com/microsoft/semantic-link-functions/actions/workflows/build.yaml/badge.svg)](https://github.com/microsoft/semantic-link-functions/actions/workflows/build.yaml)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-geopandas.svg)](https://badge.fury.io/py/semantic-link-functions-geopandas)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-holidays.svg)](https://badge.fury.io/py/semantic-link-functions-holidays)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-meteostat.svg)](https://badge.fury.io/py/semantic-link-functions-meteostat)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-phonenumbers.svg)](https://badge.fury.io/py/semantic-link-functions-phonenumbers)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-validators.svg)](https://badge.fury.io/py/semantic-link-functions-validators)
 
-As the maintainer of this project, please make a few updates:
+[FabricDataFrames](https://learn.microsoft.com/en-us/python/api/sempy/sempy.fabric.fabricdataframe) dynamically expose semantic functions based on logic defined by each function.
+For example, the is_holiday function shows up in the autocomplete suggestions when you're working on a FabricDataFrame containing both a datetime column and a country column.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Each semantic function uses information about the data types, metadata (such as Power BI data categories), and the data in a FabricDataFrame or FabricSeries to determine its relevance to the particular data on which you're working.
+
+Semantic functions are automatically discovered when annotated with the @semantic_function decorator. You can think of semantic functions as being similar to C# extension methods applied to the popular DataFrame concept.
+
+## Usage
+
+Usually a FabricDataFrame is retrieved using fabric.read_table(...) or fabric.evaluate_measure(...)
+
+```python
+from sempy.fabric import FabricDataFrame
+
+df = FabricDataFrame(
+    {"country": ["US", "AT"],
+        "lat": [40.7128, 47.8095],
+        "long": [-74.0060, 13.0550]},
+    column_metadata={"lat": {"data_category": "Latitude"}, "long": {"data_category": "Longitude"}},
+)
+
+# Convert to GeoPandas dataframe
+df_geo = df.to_geopandas(lat_col="lat", long_col="long")
+
+# Use the explore function to visualize the data
+df_geo.explore()
+```
+
+You can also create ad-hoc semantic functions
+
+```python
+from sempy.fabric import FabricDataFrame, FabricSeries
+from sempy.fabric.matcher import CountryMatcher, CityMatcher
+from sempy.functions import semantic_function, semantic_paramters
+
+@semantic_function("is_capital")
+@semantic_parameters(col_country=CountryMatcher, col_city=CityMatcher)
+def _is_captial(df: FabricDataFrame, col_country: str, col_city: str) -> FabricSeries:
+    """Returns true if the city is a capital of the country"""
+    capitals = {
+        "US": ["Washington"],
+        "AT": ["Vienna"],
+        # ...
+    }
+
+    return df[[col_country, col_city]] \
+        .apply(lambda row: row[1] in capitals[row[0]], axis=1)
+```
+
+## Development
+
+Create a conda environment with the following command:
+
+```bash
+conda env create -f environment.yml -n sempy-func
+conda activate sempy-func
+```
+
+For each package (e.g. holidays), run
+
+```bash
+cd holidays
+pytest -s tests/
+```
 
 ## Contributing
 
