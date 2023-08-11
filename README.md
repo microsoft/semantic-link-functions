@@ -14,6 +14,22 @@ Each semantic function uses information about the data types, metadata (such as 
 
 Semantic functions are automatically discovered when annotated with the @semantic_function decorator. You can think of semantic functions as being similar to C# extension methods applied to the popular DataFrame concept.
 
+## Development
+
+Create a conda environment with the following command:
+
+```bash
+conda env create -f environment.yml -n sempy-func
+conda activate sempy-func
+```
+
+For each package (e.g. holidays), run
+
+```bash
+cd holidays
+pytest -s tests/
+```
+
 ## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

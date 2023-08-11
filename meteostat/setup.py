@@ -9,7 +9,7 @@ setup(name='semantic-link-functions-meteostat',
       author='Microsoft',
       url='https://github.com/microsoft/semantic-link-functions',
       packages=find_packages(exclude=["tests", "tests.*"]),
-      install_requires=["meteostat", "semantic-link-sempy"],
+      install_requires=["meteostat", f"semantic-link-sempy=={version}"],
       author_email='semanticdatascience@service.microsoft.com',
       classifiers=['Development Status :: 4 - Beta', 'Intended Audience :: Developers', 'License :: Other/Proprietary License', 'Programming Language :: Python :: 3.10']
       )
