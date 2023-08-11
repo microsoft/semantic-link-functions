@@ -26,10 +26,11 @@ jobs:
       - name: Lint with flake8
         run: |
           cd ${{ matrix.package }}
-          pip install pytest flake8
+          pip install flake8
           flake8 . --count --show-source --statistics
 
       - name: Test with pytest
         run: |
           cd ${{ matrix.package }}
+          pip instal pytest
           pytest -s tests/
