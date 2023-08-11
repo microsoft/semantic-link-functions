@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = ""  # don't change - this is updated by .pipelines/version-patch.py
+version = "0.0.0"  # don't change - this is updated by .pipelines/version-patch.py
 
 setup(name='semantic-link-functions-geopandas',
       version=version,
