@@ -22,6 +22,7 @@ jobs:
         run: |
           cd ${{ matrix.package }}
           pip install -e .
+          pip install graphviz
 
       - name: Lint with flake8
         run: |
