@@ -20,5 +20,6 @@ dependencies:
 - sqlalchemy=2.0.5.post1
 - scikit-learn=1.2.2
 - flake8
+- pytest
 - pip:
   - pythonnet==3.0.1
