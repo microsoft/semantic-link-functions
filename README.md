@@ -1,14 +1,17 @@
-# Project
+# Semanitc Link Functions
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-geopandas.svg)](https://badge.fury.io/py/semantic-link-functions-geopandas)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-holidays.svg)](https://badge.fury.io/py/semantic-link-functions-holidays)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-meteostat.svg)](https://badge.fury.io/py/semantic-link-functions-meteostat)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-phonenumbers.svg)](https://badge.fury.io/py/semantic-link-functions-phonenumbers)
+[![PyPI version](https://badge.fury.io/py/semantic-link-functions-validators.svg)](https://badge.fury.io/py/semantic-link-functions-validators)
 
-As the maintainer of this project, please make a few updates:
+[FabricDataFrames](https://learn.microsoft.com/en-us/python/api/sempy/sempy.fabric.fabricdataframe) dynamically expose semantic functions based on logic defined by each function.
+For example, the is_holiday function shows up in the autocomplete suggestions when you're working on a FabricDataFrame containing both a datetime column and a country column.
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+Each semantic function uses information about the data types, metadata (such as Power BI data categories), and the data in a FabricDataFrame or FabricSeries to determine its relevance to the particular data on which you're working.
+
+Semantic functions are automatically discovered when annotated with the @semantic_function decorator. You can think of semantic functions as being similar to C# extension methods applied to the popular DataFrame concept.
 
 ## Contributing
 
