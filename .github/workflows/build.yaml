@@ -42,19 +42,20 @@ jobs:
           channel-priority: strict
 
       - name: Install package
-        shell: bash
+        shell: bash -el {0}
         run: |
+          conda info
           cd ${{ matrix.package }}
           pip install -e .
 
       - name: Lint with flake8
-        shell: bash
+        shell: bash -el {0}
         run: |
           cd ${{ matrix.package }}
           flake8 . --count --show-source --statistics
 
       - name: Test with pytest
-        shell: bash
+        shell: bash -el {0}
         run: |
           cd ${{ matrix.package }}
           pytest -s tests/
