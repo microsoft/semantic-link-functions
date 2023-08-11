@@ -18,6 +18,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      - name: Get Date
+        id: get-date
+        run: echo "today=$(/bin/date -u '+%Y%m%d')" >> $GITHUB_OUTPUT
+        shell: bash
+
       - name: Cache conda
         uses: actions/cache@v2
         env:
@@ -36,7 +41,7 @@ jobs:
           environment-file: environment.yml
           channel-priority: strict
 
-      - name: Install packages
+      - name: Install package
         run: |
           cd ${{ matrix.package }}
           pip install -e .
