@@ -18,20 +18,19 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install package
+      - name: Install packages
         run: |
+          pip install -r requirements.txt
+          
           cd ${{ matrix.package }}
           pip install -e .
-          pip install graphviz
 
       - name: Lint with flake8
         run: |
           cd ${{ matrix.package }}
-          pip install flake8
           flake8 . --count --show-source --statistics
 
       - name: Test with pytest
         run: |
           cd ${{ matrix.package }}
-          pip install pytest
           pytest -s tests/
