@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
 
-version = "0.0.13"  # don't change - this is updated by .pipelines/version-patch.py
+# don't change - this is updated by .pipelines/version-patch.py
+version = "0.0.13"
 
 setup(name='semantic-link-functions-holidays',
       version=version,
