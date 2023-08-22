@@ -5,7 +5,7 @@ version = "0.0.13"  # don't change - this is updated by .pipelines/version-patch
 setup(name='semantic-link-functions-geopandas',
       version=version,
       python_requires='>=3.10',
-      description='Semantic link functions for Geopandas',
+      description='Semantic link functions for Geopandas. Enables conversion of a FabricDataFrame to a GeoDataFrame.',
       author='Microsoft',
       url='https://github.com/microsoft/semantic-link-functions',
       packages=find_packages(exclude=["tests", "tests.*"]),

@@ -5,7 +5,7 @@ version = "0.0.13"  # don't change - this is updated by .pipelines/version-patch
 setup(name='semantic-link-functions-meteostat',
       version=version,
       python_requires='>=3.10',
-      description='Semantic link functions for Meteostat',
+      description='Semantic link functions for meteostat package. Enables enrichment of FabricDataFrame with historical weather data.',
       author='Microsoft',
       url='https://github.com/microsoft/semantic-link-functions',
       packages=find_packages(exclude=["tests", "tests.*"]),

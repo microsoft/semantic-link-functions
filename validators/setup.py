@@ -5,7 +5,7 @@ version = "0.0.13"  # don't change - this is updated by .pipelines/version-patch
 setup(name='semantic-link-functions-validators',
       version=version,
       python_requires='>=3.10',
-      description='Semantic link functions for Validators',
+      description='Semantic link functions for validators package. Enables validation of email addresses, credit card numbers, ... in FabricDataFrames.',
       author='Microsoft',
       url='https://github.com/microsoft/semantic-link-functions',
       packages=find_packages(exclude=["tests", "tests.*"]),
