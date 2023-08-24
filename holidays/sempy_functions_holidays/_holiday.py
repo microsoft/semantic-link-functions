@@ -60,4 +60,4 @@ def is_holiday(df: FabricDataFrame,
         df_holiday_unique["__is_holiday"] = df_holiday_unique.apply(lambda row: row[0] in holidays.country_holidays(row[1]), axis=1)
 
     # project back to original dataframe
-    return df_holiday.merge(df_holiday_unique)["__is_holiday"]
+    return df_holiday.merge(df_holiday_unique).set_index(df.index)["__is_holiday"]

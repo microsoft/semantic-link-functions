@@ -55,3 +55,19 @@ def test_function_holiday_multiple():
     assert "is_holiday(date_col='date', country_col='country')" in dir(df)
     assert "is_holiday(date_col='date2', country_col='country')" in dir(df)
     assert "is_holiday(date_col='date3', country_col='country')" in dir(df)
+
+
+def test_function_holiday_index():
+    df = FabricDataFrame(
+        {"country": ["US", "US"], "date": ["2023-01-06", "2023-01-06"]},
+        column_metadata={"country": {"data_category": "Country"}},
+    )
+
+    df.set_index(pd.Series(["a", "b"]), inplace=True)
+
+    df["date"] = pd.to_datetime(df["date"])
+
+    # make sure it works with index
+    df["holiday"] = df.is_holiday(date_col="date", country_col="country")
+
+    assert df["holiday"].tolist() == [False, False]
