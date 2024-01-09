@@ -40,7 +40,7 @@ You can also create ad-hoc semantic functions
 ```python
 from sempy.fabric import FabricDataFrame, FabricSeries
 from sempy.fabric.matcher import CountryMatcher, CityMatcher
-from sempy.functions import semantic_function, semantic_paramters
+from sempy.functions import semantic_function, semantic_parameters
 
 @semantic_function("is_capital")
 @semantic_parameters(col_country=CountryMatcher, col_city=CityMatcher)
