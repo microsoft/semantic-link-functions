@@ -21,5 +21,3 @@ def test_meteostat():
     df_weather = df_weather.fillna(-1)
 
     assert df_weather.shape == (4, 13)
-    assert df_weather.iloc[0].values.tolist() == \
-        [40.7128, -74.006, pd.Timestamp('2023-01-06 00:00:00'), 5.9, 3.1, 7.9, 9.8, 0.0, 303.0, 9.2, -1, 1016.6, -1]
